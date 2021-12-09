@@ -1,33 +1,19 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import './button.css';
 
 interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
   primary?: boolean;
-  /**
-   * What background color to use
-   */
   backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
+  label?: string;
   onClick?: () => void;
 }
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
+const Button: React.VFC<ButtonProps> = ({
   primary = false,
   size = 'medium',
   backgroundColor,
@@ -40,9 +26,12 @@ export const Button = ({
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       style={{ backgroundColor }}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
       {label}
     </button>
   );
 };
+
+export default Button;

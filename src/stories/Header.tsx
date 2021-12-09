@@ -4,13 +4,15 @@ import { Button } from './Button';
 import './header.css';
 
 interface HeaderProps {
-  user?: {};
+  user?: any;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
+const Header: React.VFC<HeaderProps> = ({
+  user, onLogin, onLogout, onCreateAccount,
+}) => (
   <header>
     <div className="wrapper">
       <div>
@@ -45,3 +47,5 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
     </div>
   </header>
 );
+
+export default Header;
